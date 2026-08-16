@@ -245,7 +245,7 @@
   }
   setInterval(function(){ if(heat>0){ heat=Math.max(0, heat-.012); setHeat(); } },100);
 
-  var CNT='https://api.counterapi.dev/v1/buybuttoncoin/presses';
+  var CB='https://abacus.jasoncameron.dev', CNT=CB+'/get/buybuttoncoin/presses', CUP=CB+'/hit/buybuttoncoin/presses';
   var gEl=document.getElementById('gcount'), gBar=document.getElementById('gbar');
   var GOAL=2000000, gLast=0, gBudget=4;
   function showGlobal(t){ if(!(t>=0)) return; gLast=t; gEl.textContent=Number(t).toLocaleString(); gBar.style.width=Math.min(100,t/GOAL*100)+'%'; }
@@ -253,7 +253,7 @@
   fetch(CNT).then(gj).then(showGlobal).catch(function(){});
   setInterval(function(){ fetch(CNT).then(gj).then(showGlobal).catch(function(){}); }, 12000);
   setInterval(function(){ gBudget=4; }, 1000);
-  function gpress(){ if(gBudget<=0){ return; } gBudget--; fetch(CNT+'/up').then(gj).then(showGlobal).catch(function(){}); }
+  function gpress(){ if(gBudget<=0){ return; } gBudget--; fetch(CUP).then(gj).then(showGlobal).catch(function(){}); }
   function down(){ btn.classList.add('down'); wrap.classList.add('down'); }
   function up(){
     btn.classList.remove('down'); wrap.classList.remove('down');
