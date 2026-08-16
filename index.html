@@ -7,9 +7,9 @@
 <meta name="description" content="$BUY. The button that refused to be switched off. Coming to Robinhood Chain.">
 <meta property="og:title" content="BUYBUTTON ($BUY)">
 <meta property="og:description" content="They turned it off once. Never again. Coming to Robinhood Chain.">
-<meta property="og:image" content="/buy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/edward0207/buybotton-site/main/buy.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="/buy.png">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/edward0207/buybotton-site/main/buy.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -98,6 +98,29 @@
   footer{position:relative; z-index:1; border-top:2px solid var(--green-d); background:#12141a; padding:22px 20px; text-align:center; font-size:12px; color:var(--grey); line-height:1.7}
   footer .g{color:var(--green)}
 
+
+  /* HEAT */
+  .btn-wrap{--heat:0}
+  .heatglow{position:absolute; inset:-14%; border-radius:50%; pointer-events:none; opacity:var(--heat);
+    background:radial-gradient(circle, rgba(255,120,40,.85), rgba(255,60,30,.35) 45%, rgba(255,60,30,0) 65%); filter:blur(16px); transition:opacity .2s}
+  .thebutton img{filter:brightness(calc(1 + var(--heat)*.25)) saturate(calc(1 + var(--heat)*.6)) sepia(calc(var(--heat)*.6)) hue-rotate(calc(var(--heat)*-95deg))}
+  .smoke{position:absolute; left:50%; top:8%; width:0; height:0; pointer-events:none}
+  .smoke i{position:absolute; left:-9px; width:18px; height:18px; border-radius:50%; background:rgba(200,200,210,.55); filter:blur(4px); opacity:0; animation:smoke 1.6s ease-out forwards}
+  @keyframes smoke{0%{transform:translate(0,0) scale(.6);opacity:.7}100%{transform:translate(var(--dx),-140px) scale(2.2);opacity:0}}
+  .tremble{animation:tremble .12s linear infinite}
+  @keyframes tremble{25%{transform:translate(1px,-1px)}50%{transform:translate(-1px,1px)}75%{transform:translate(1px,1px)}}
+  .heatlbl{margin-top:10px; font-size:12px; letter-spacing:.14em; color:var(--grey)}
+  .heatlbl b{color:var(--amber)}
+  .heatlbl b.hot{color:var(--red)}
+  /* GLOBAL */
+  .global{display:none; margin-top:14px; font-size:13px; color:var(--grey)}
+  .global.on{display:block}
+  .global b{color:var(--green); font-family:"Archivo Black",sans-serif; font-size:22px; letter-spacing:.02em}
+  .bar{margin:10px auto 0; width:min(78vw,520px); height:10px; background:#12141a; border:2px solid var(--green-d); position:relative}
+  .bar i{position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg,var(--green),var(--amber)); transition:width 1s}
+  .barlbl{display:flex; justify-content:space-between; width:min(78vw,520px); margin:6px auto 0; font-size:11px; color:var(--grey); letter-spacing:.06em}
+  .fine{margin-top:8px; font-size:11px; color:#5e6472; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.5}
+
   @media (prefers-reduced-motion:reduce){
     .tape span,.status::before,.rings.go i,.log.on li,.shake{animation:none!important}
     .log li{opacity:1;transform:none}
@@ -115,15 +138,24 @@
     <div class="kicker">The only button on this page</div>
     <div class="btn-wrap" id="wrap">
       <div class="halo" aria-hidden="true"></div>
+      <div class="heatglow" aria-hidden="true"></div>
+      <div class="smoke" id="smoke" aria-hidden="true"></div>
       <div class="rings" id="rings" aria-hidden="true"><i></i><i></i><i></i></div>
       <button class="thebutton" id="btn" aria-label="Press the buy button">
-        <img src="/buy.png" alt="BUYBUTTON, a green arcade buy button that is alive">
+        <img src="https://raw.githubusercontent.com/edward0207/buybotton-site/main/buy.png" alt="BUYBUTTON, a green arcade buy button that is alive">
       </button>
     </div>
     <h1>BUYBUTTON</h1>
     <p class="slogan"><span class="m">They turned it off once.</span> <span class="g">Never again.</span></p>
     <div class="counter" role="status" aria-live="polite"><small>PRESSED</small> <b id="count">0</b> <small>TIMES</small></div>
     <div class="status">ALWAYS ON</div>
+    <div class="heatlbl">TEMP: <b id="heat">COOL</b></div>
+    <div class="global" id="global">
+      EVERYONE, EVER: <b id="gcount">0</b>
+      <div class="bar" aria-hidden="true"><i id="gbar"></i></div>
+      <div class="barlbl"><span>0</span><span>2,000,000 PRESS MARK</span></div>
+      <div class="fine">What happens at the 2,000,000 mark gets announced on @buybuttoncoin when it is real. Nothing here is a promise until it is posted there.</div>
+    </div>
     <p class="cannot">Buttons on this page you can switch off: <s>none</s></p>
   </section>
 
@@ -194,10 +226,43 @@
       o.connect(g).connect(ac.destination); o.start(); o.stop(ac.currentTime+.13);
     }catch(e){}
   }
+
+  var heat=0, heatEl=document.getElementById('heat'), smokeEl=document.getElementById('smoke');
+  function setHeat(){
+    wrap.style.setProperty('--heat', heat.toFixed(3));
+    var lbl = heat<.15?'COOL':heat<.4?'WARM':heat<.7?'HOT':heat<.92?'OVERHEATING':'MELTDOWN';
+    heatEl.textContent=lbl; heatEl.className = heat>=.7?'hot':'';
+    if(!reduce){ if(heat>.75) wrap.classList.add('tremble'); else wrap.classList.remove('tremble'); }
+  }
+  function puff(){
+    if(reduce || heat<.4) return;
+    var i=document.createElement('i'); i.style.setProperty('--dx',(Math.random()*80-40)+'px');
+    smokeEl.appendChild(i); setTimeout(function(){ i.remove(); },1700);
+  }
+  setInterval(function(){ if(heat>0){ heat=Math.max(0, heat-.012); setHeat(); } },100);
+
+  var API = ''; // isi: https://alamat-server-counter (kosong = mode lokal)
+  var pending=0, gEl=document.getElementById('gcount'), gBar=document.getElementById('gbar'), gBox=document.getElementById('global');
+  var GOAL=2000000;
+  function showGlobal(t){ gEl.textContent=Number(t).toLocaleString(); gBar.style.width=Math.min(100,t/GOAL*100)+'%'; gBox.classList.add('on'); }
+  if(API){
+    fetch(API+'/count').then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){});
+    setInterval(function(){
+      if(pending>0){
+        var k=pending; pending=0;
+        fetch(API+'/tap',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:k})})
+          .then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){ pending+=k; });
+      } else if(Math.random()<.2){
+        fetch(API+'/count').then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){});
+      }
+    },1000);
+  }
+
   function down(){ btn.classList.add('down'); wrap.classList.add('down'); }
   function up(){
     btn.classList.remove('down'); wrap.classList.remove('down');
     n++; out.textContent=n.toLocaleString(); click();
+    heat=Math.min(1, heat+.07); setHeat(); puff(); pending++;
     if(navigator.vibrate) navigator.vibrate(18);
     if(!reduce){
       rings.classList.remove('go'); void rings.offsetWidth; rings.classList.add('go');
