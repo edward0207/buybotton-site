@@ -102,8 +102,10 @@
   /* HEAT */
   .btn-wrap{--heat:0}
   .heatglow{position:absolute; inset:-14%; border-radius:50%; pointer-events:none; opacity:var(--heat);
-    background:radial-gradient(circle, rgba(255,120,40,.85), rgba(255,60,30,.35) 45%, rgba(255,60,30,0) 65%); filter:blur(16px); transition:opacity .2s}
-  .thebutton img{filter:brightness(calc(1 + var(--heat)*.25)) saturate(calc(1 + var(--heat)*.6)) sepia(calc(var(--heat)*.6)) hue-rotate(calc(var(--heat)*-95deg))}
+    background:radial-gradient(circle, rgba(255,40,10,.95), rgba(255,20,0,.5) 42%, rgba(255,20,0,0) 66%); filter:blur(18px); transition:opacity .2s}
+  .ember{position:absolute; inset:6%; border-radius:50%; pointer-events:none; opacity:calc(var(--heat)*var(--heat)); background:radial-gradient(circle at 50% 40%, rgba(255,60,0,.55), rgba(255,0,0,.25) 55%, rgba(255,0,0,0) 72%); mix-blend-mode:screen; animation:emberpulse .5s ease-in-out infinite alternate}
+  @keyframes emberpulse{to{transform:scale(1.04);opacity:calc(var(--heat)*var(--heat)*.75)}}
+  .thebutton img{filter:hue-rotate(calc(var(--heat)*-128deg)) saturate(calc(1 + var(--heat)*1.6)) brightness(calc(1 + var(--heat)*.28)) contrast(calc(1 + var(--heat)*.25))}
   .smoke{position:absolute; left:50%; top:8%; width:0; height:0; pointer-events:none}
   .smoke i{position:absolute; left:-9px; width:18px; height:18px; border-radius:50%; background:rgba(200,200,210,.55); filter:blur(4px); opacity:0; animation:smoke 1.6s ease-out forwards}
   @keyframes smoke{0%{transform:translate(0,0) scale(.6);opacity:.7}100%{transform:translate(var(--dx),-140px) scale(2.2);opacity:0}}
@@ -144,6 +146,7 @@
       <button class="thebutton" id="btn" aria-label="Press the buy button">
         <img src="https://raw.githubusercontent.com/edward0207/buybotton-site/main/buy.png" alt="BUYBUTTON, a green arcade buy button that is alive">
       </button>
+      <div class="ember" aria-hidden="true"></div>
     </div>
     <h1>BUYBUTTON</h1>
     <p class="slogan"><span class="m">They turned it off once.</span> <span class="g">Never again.</span></p>
