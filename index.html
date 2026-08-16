@@ -115,7 +115,7 @@
   .heatlbl b{color:var(--amber)}
   .heatlbl b.hot{color:var(--red)}
   /* GLOBAL */
-  .global{display:none; margin-top:14px; font-size:13px; color:var(--grey)}
+  .global{display:block; margin-top:14px; font-size:13px; color:var(--grey)}
   .global.on{display:block}
   .global b{color:var(--green); font-family:"Archivo Black",sans-serif; font-size:22px; letter-spacing:.02em}
   .bar{margin:10px auto 0; width:min(78vw,520px); height:10px; background:#12141a; border:2px solid var(--green-d); position:relative}
@@ -153,11 +153,12 @@
     <div class="counter" role="status" aria-live="polite"><small>PRESSED</small> <b id="count">0</b> <small>TIMES</small></div>
     <div class="status">ALWAYS ON</div>
     <div class="heatlbl">TEMP: <b id="heat">COOL</b></div>
-    <div class="global" id="global">
-      EVERYONE, EVER: <b id="gcount">0</b>
+    <div class="global on" id="global">
+      <div class="eyebrow" style="margin-top:8px">2,000,000 PRESS AIRDROP</div>
+      EVERYONE, EVER: <b id="gcount">syncing...</b>
       <div class="bar" aria-hidden="true"><i id="gbar"></i></div>
-      <div class="barlbl"><span>0</span><span>2,000,000 PRESS MARK</span></div>
-      <div class="fine">What happens at the 2,000,000 mark gets announced on @buybuttoncoin when it is real. Nothing here is a promise until it is posted there.</div>
+      <div class="barlbl"><span>0</span><span>2,000,000</span></div>
+      <div class="fine">When the whole world hits 2,000,000 presses, $BUY drops an airdrop to the community. Amount and eligibility rules get posted on @buybuttoncoin before the mark is hit. Counter is global and updates for everyone.</div>
     </div>
     <p class="cannot">Buttons on this page you can switch off: <s>none</s></p>
   </section>
@@ -244,28 +245,20 @@
   }
   setInterval(function(){ if(heat>0){ heat=Math.max(0, heat-.012); setHeat(); } },100);
 
-  var API = ''; // isi: https://alamat-server-counter (kosong = mode lokal)
-  var pending=0, gEl=document.getElementById('gcount'), gBar=document.getElementById('gbar'), gBox=document.getElementById('global');
-  var GOAL=2000000;
-  function showGlobal(t){ gEl.textContent=Number(t).toLocaleString(); gBar.style.width=Math.min(100,t/GOAL*100)+'%'; gBox.classList.add('on'); }
-  if(API){
-    fetch(API+'/count').then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){});
-    setInterval(function(){
-      if(pending>0){
-        var k=pending; pending=0;
-        fetch(API+'/tap',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({n:k})})
-          .then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){ pending+=k; });
-      } else if(Math.random()<.2){
-        fetch(API+'/count').then(function(r){return r.json()}).then(function(j){ showGlobal(j.total); }).catch(function(){});
-      }
-    },1000);
-  }
-
+  var CNT='https://api.counterapi.dev/v1/buybuttoncoin/presses';
+  var gEl=document.getElementById('gcount'), gBar=document.getElementById('gbar');
+  var GOAL=2000000, gLast=0, gBudget=4;
+  function showGlobal(t){ if(!(t>=0)) return; gLast=t; gEl.textContent=Number(t).toLocaleString(); gBar.style.width=Math.min(100,t/GOAL*100)+'%'; }
+  function gj(r){ return r.json().then(function(j){ return j.count!==undefined?j.count:(j.value!==undefined?j.value:(j.data&&j.data.count)); }); }
+  fetch(CNT).then(gj).then(showGlobal).catch(function(){});
+  setInterval(function(){ fetch(CNT).then(gj).then(showGlobal).catch(function(){}); }, 12000);
+  setInterval(function(){ gBudget=4; }, 1000);
+  function gpress(){ if(gBudget<=0){ return; } gBudget--; fetch(CNT+'/up').then(gj).then(showGlobal).catch(function(){}); }
   function down(){ btn.classList.add('down'); wrap.classList.add('down'); }
   function up(){
     btn.classList.remove('down'); wrap.classList.remove('down');
     n++; out.textContent=n.toLocaleString(); click();
-    heat=Math.min(1, heat+.07); setHeat(); puff(); pending++;
+    heat=Math.min(1, heat+.07); setHeat(); puff(); gpress();
     if(navigator.vibrate) navigator.vibrate(18);
     if(!reduce){
       rings.classList.remove('go'); void rings.offsetWidth; rings.classList.add('go');
