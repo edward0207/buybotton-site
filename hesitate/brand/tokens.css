@@ -1,0 +1,46 @@
+/* HESITATE — visual DNA.
+   Six colours. If a design needs a seventh, the design is wrong. */
+
+:root {
+  /* paper. everything sits on this, never on white. */
+  --paper:    #F1E7D3;
+  --paper-2:  #FAF3E4;  /* cards, raised surfaces */
+  --paper-3:  #E4D7BE;  /* recessed, tracks, dividers */
+
+  /* ink. never pure black — pure black looks printed by a machine. */
+  --ink:      #23201B;
+  --ink-2:    #4A443A;  /* body copy */
+  --ink-3:    #7A7060;  /* labels, captions, the quiet stuff */
+
+  /* the signature. muted Robinhood-adjacent green.
+     it is an ACCENT, not a theme. if the page is mostly green, back off. */
+  --green:    #5E9455;
+  --green-2:  #6DA462;  /* the one step lighter, for planes in front */
+  --green-d:  #47713F;  /* shading, borders, pressed states */
+  --green-x:  #2F4F2A;  /* text on green, deep shadow */
+
+  /* skin. the only other colour in the character. */
+  --skin:     #EBD3B2;
+
+  /* type */
+  --display: 'Bricolage Grotesque', 'Archivo Black', system-ui, sans-serif;
+  --body:    'Work Sans', system-ui, -apple-system, sans-serif;
+  --hand:    'Caveat', ui-rounded, cursive;
+
+  /* linework. strokes are hand-weight, never hairline. */
+  --line:      2.5px;
+  --line-bold: 4px;
+  --radius:    14px;   /* soft, but never a pill. pills look like a SaaS product. */
+}
+
+/* the paper grain. one element, fixed, multiply. */
+.grain {
+  position: fixed; inset: 0; z-index: 99; pointer-events: none;
+  opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .17 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* borders are drawn slightly wrong on purpose: one corner rounder than the others.
+   this single rule does more anti-AI work than any amount of texture. */
+.wonky   { border-radius: 18px 10px 16px 9px / 10px 17px 9px 16px }
+.wonky-2 { border-radius: 9px 17px 10px 15px / 16px 9px 15px 10px }

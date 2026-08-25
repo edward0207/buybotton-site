@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HESITATE — he'll click it. any second now.</title>
+<meta name="description" content="$HESITATE. He saw it. He thought about it. He did not click. A meme token hesitating toward Robinhood Chain. Fixed supply, zero tax, no team wallet.">
+<meta property="og:title" content="HESITATE — he'll click it. any second now.">
+<meta property="og:description" content="He saw it. He thought about it. He did not click. $HESITATE, hesitating toward Robinhood Chain.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F1E7D3">
+<link rel="icon" type="image/svg+xml" href="mascot/hesitate-head.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Caveat:wght@500;600&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ---- tokens: keep in sync with brand/tokens.css ---- */
+:root{
+  --paper:#F1E7D3; --paper-2:#FAF3E4; --paper-3:#E4D7BE;
+  --ink:#23201B; --ink-2:#4A443A; --ink-3:#7A7060;
+  --green:#5E9455; --green-2:#6DA462; --green-d:#47713F; --green-x:#2F4F2A;
+  --skin:#EBD3B2;
+  --display:'Bricolage Grotesque','Archivo Black',system-ui,sans-serif;
+  --body:'Work Sans',system-ui,-apple-system,sans-serif;
+  --hand:'Caveat',ui-rounded,cursive;
+}
+*{box-sizing:border-box}
+html{background:var(--paper);scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink-2);
+  font:16.5px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:clip;
+  -webkit-tap-highlight-color:transparent}
+
+/* the grain. one element, multiply, never in the way. */
+.grain{position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .17 0 0 0 .12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* corners are drawn slightly wrong on purpose. */
+.wonky{border-radius:18px 10px 16px 9px / 10px 17px 9px 16px}
+.wonky-2{border-radius:9px 17px 10px 15px / 16px 9px 15px 10px}
+
+main{max-width:820px;margin:0 auto;padding:0 18px 80px}
+
+h1,h2,h3{font-family:var(--display);color:var(--ink);margin:0;line-height:1.08;font-weight:800}
+h1{font-size:clamp(56px,15vw,124px);letter-spacing:-.03em}
+h2{font-size:clamp(24px,4.6vw,34px);letter-spacing:-.02em;margin-bottom:14px}
+h3{font-size:17px;letter-spacing:-.01em;font-weight:600;margin-bottom:6px}
+p{margin:0 0 12px}
+a{color:var(--green-x)}
+
+.card{background:var(--paper-2);border:2.5px solid var(--ink);padding:26px 24px;margin:20px 0;
+  box-shadow:5px 6px 0 rgba(35,32,27,.16)}
+.label{font-family:var(--body);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 10px;font-weight:600}
+.hand{font-family:var(--hand);font-size:22px;color:var(--green-x);line-height:1.35}
+.small{font-size:13.5px;color:var(--ink-3)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(241,231,211,.93);backdrop-filter:blur(7px);
+  border-bottom:2.5px solid var(--ink);display:flex;align-items:center;gap:14px;
+  padding:10px 18px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.brand{font-family:var(--display);font-weight:800;color:var(--ink);text-decoration:none;
+  font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand small{display:block;font-family:var(--body);font-size:10px;letter-spacing:.18em;color:var(--ink-3);font-weight:600}
+.nav .chips{display:flex;gap:8px;margin-left:auto}
+.nav .chips a{font-size:12.5px;text-decoration:none;color:var(--ink-2);border:2px solid var(--paper-3);
+  padding:5px 11px;white-space:nowrap;border-radius:10px 6px 9px 5px / 6px 10px 5px 9px}
+.nav .chips a:hover,.nav .chips a.on{border-color:var(--green);color:var(--green-x);background:var(--paper-2)}
+
+/* ---------- hero ---------- */
+.hero{text-align:center;padding-top:26px}
+.face{width:min(260px,58vw);height:auto;aspect-ratio:1;margin:0 auto 6px;display:block;
+  border:3px solid var(--ink);border-radius:50%;background:var(--paper-2)}
+.kicker{font-family:var(--hand);font-size:23px;color:var(--green-x);margin-bottom:2px}
+.tagline{font-size:19px;color:var(--ink);margin-top:10px;font-weight:500}
+.chain{font-size:14.5px;color:var(--ink-3);margin-top:4px}
+.chain b{color:var(--green-x)}
+
+/* ---------- the stage: where the button runs away ---------- */
+.stage{position:relative;height:270px;margin:22px 0 4px;border:2.5px dashed var(--paper-3);
+  background:var(--paper-2);overflow:hidden;touch-action:manipulation}
+.stage.settled{border-style:solid;border-color:var(--green)}
+.buy{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:var(--display);font-weight:800;font-size:clamp(17px,4.4vw,22px);letter-spacing:-.01em;
+  background:var(--green);color:var(--paper-2);border:3px solid var(--ink);
+  padding:16px 26px;cursor:pointer;white-space:nowrap;
+  box-shadow:4px 5px 0 var(--green-x);
+  transition:left .19s cubic-bezier(.3,1.5,.5,1),top .19s cubic-bezier(.3,1.5,.5,1),
+             transform .19s cubic-bezier(.3,1.5,.5,1),background .2s}
+.buy:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.stage.moved .buy{transform:none}
+.buy.tired{background:var(--paper-3);color:var(--ink);box-shadow:4px 5px 0 rgba(35,32,27,.28);cursor:pointer}
+.stage .ghost{position:absolute;inset:auto 0 12px;text-align:center;font-family:var(--hand);
+  font-size:20px;color:var(--ink-3);pointer-events:none;padding:0 14px}
+
+.payoff{display:none;border:2.5px solid var(--green);background:var(--paper-2);padding:20px;margin-top:14px}
+.payoff.on{display:block}
+.payoff b{color:var(--green-x)}
+
+.counters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.pill{border:2.5px solid var(--ink);background:var(--paper-2);padding:8px 14px;font-size:13px;
+  border-radius:14px 8px 13px 7px / 8px 13px 7px 12px}
+.pill b{font-family:var(--display);font-weight:800;color:var(--green-x);font-size:17px}
+
+/* ---------- boxes / stats ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.box{border:2.5px solid var(--ink);background:var(--paper);padding:16px 15px}
+.box ul{margin:0;padding-left:17px}
+.box li{margin:5px 0;font-size:14.5px}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px}
+.stat{border:2.5px solid var(--ink);background:var(--paper);padding:14px}
+.stat .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.stat .v{font-family:var(--display);font-weight:800;font-size:26px;color:var(--ink);margin:3px 0;letter-spacing:-.02em}
+.stat .s{font-size:12.5px;color:var(--ink-3);line-height:1.4}
+
+/* ---------- token ---------- */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0 20px}
+.facts div{border:2.5px solid var(--ink);background:var(--paper);padding:12px}
+.facts b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.facts span{font-family:var(--display);font-weight:800;color:var(--ink);font-size:18px}
+.dist .row{display:grid;grid-template-columns:110px 1fr 48px;align-items:center;gap:10px;margin:8px 0;font-size:14px}
+.dist .bar{height:14px;background:var(--paper-3);border:2px solid var(--ink)}
+.dist .bar i{display:block;height:100%;background:var(--green)}
+.dist .p{text-align:right;font-weight:600;color:var(--ink)}
+.rules{margin:0;padding-left:18px}
+.rules li{margin:6px 0}
+.receipts{list-style:none;margin:8px 0 0;padding:0}
+.receipts li{display:flex;justify-content:space-between;gap:12px;border-bottom:2px dotted var(--paper-3);
+  padding:8px 0;font-size:14.5px}
+.receipts em{font-style:normal;color:var(--ink-3);white-space:nowrap}
+
+.cabox{border:2.5px dashed var(--ink);background:var(--paper);padding:20px;text-align:center;margin-top:16px}
+.cabox .big{font-family:var(--display);font-weight:800;font-size:19px;color:var(--ink)}
+.cabox .addr{font-family:ui-monospace,monospace;font-size:13px;word-break:break-all;margin-top:8px;display:none}
+.cabtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;display:none}
+.mono{font-size:12.5px;color:var(--ink-3);margin-top:12px}
+
+.btn{display:inline-block;border:2.5px solid var(--ink);padding:11px 18px;text-decoration:none;
+  font-weight:600;font-size:14.5px;cursor:pointer;font-family:var(--body);
+  box-shadow:3px 4px 0 rgba(35,32,27,.2);background:var(--paper-2);color:var(--ink)}
+.btn.green{background:var(--green);color:var(--paper-2);box-shadow:3px 4px 0 var(--green-x)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 2px 0 rgba(35,32,27,.2)}
+
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;position:relative;padding:0 0 16px 46px;margin-bottom:4px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;
+  display:grid;place-items:center;background:var(--green);color:var(--paper-2);border:2.5px solid var(--ink);
+  font-family:var(--display);font-weight:800;border-radius:12px 7px 11px 6px / 7px 11px 6px 10px}
+.warn{border:2.5px solid var(--ink);background:var(--paper-3);padding:14px;font-size:14.5px;margin-top:14px}
+
+details{border-bottom:2px solid var(--paper-3)}
+summary{cursor:pointer;padding:13px 0;font-weight:600;color:var(--ink);list-style:none;font-size:15.5px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--green-x);font-family:var(--display);font-weight:800}
+details[open] summary::after{content:"\2013"}
+details .a{padding:0 0 14px;font-size:14.5px}
+details .a p{margin:0}
+
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.link{border:2.5px solid var(--ink);background:var(--paper-2);padding:11px 16px;text-decoration:none;
+  color:var(--ink);font-weight:600;font-size:14.5px}
+.link.soon{border-style:dashed;color:var(--ink-3);font-weight:400}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:14px}
+.gallery figure{margin:0;text-align:center}
+.gallery img{width:100%;display:block;border:2.5px solid var(--ink);background:var(--paper-2)}
+.gallery figcaption{font-family:var(--hand);font-size:17px;color:var(--ink-3);margin-top:5px}
+
+footer{border-top:2.5px solid var(--ink);padding:24px 18px 40px;text-align:center;
+  font-size:12.5px;color:var(--ink-3);line-height:1.7;max-width:820px;margin:30px auto 0}
+
+@media (max-width:560px){
+  .two{grid-template-columns:1fr}
+  .dist .row{grid-template-columns:88px 1fr 44px;font-size:13px}
+  .stage{height:300px}
+}
+@media (prefers-reduced-motion:reduce){
+  .buy{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav" aria-label="sections">
+  <a class="brand" href="#top">HESITATE<small>$HESITATE</small></a>
+  <div class="chips" id="chips">
+    <a href="#him">him</a>
+    <a href="#index">index</a>
+    <a href="#token">token</a>
+    <a href="#howto">buy</a>
+    <a href="#faq">faq</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <img class="face" id="face" src="mascot/hesitate.svg" width="1000" height="1000"
+         alt="HESITATE, a hooded character with a long crooked nose and one finger half-raised">
+    <p class="kicker">he saw it. he thought about it.</p>
+    <h1>HESITATE</h1>
+    <p class="tagline">He'll click it. Any second now.</p>
+    <p class="chain"><b>$HESITATE</b> — hesitating toward Robinhood Chain</p>
+
+    <div class="stage wonky" id="stage">
+      <button class="buy" id="buy" type="button">BUY $HESITATE</button>
+      <div class="ghost" id="ghost">the button is right there.</div>
+    </div>
+
+    <div class="counters">
+      <div class="pill">it moved <b id="dodges">0</b> times</div>
+      <div class="pill">flinches, everyone, ever: <b id="gcount">…</b></div>
+    </div>
+
+    <div class="payoff wonky-2" id="payoff">
+      <p><b>There. You clicked it.</b></p>
+      <p>Nothing happened, because there is nothing to buy yet. The contract does not exist. Neither does the presale, the allowlist, or the person in your DMs.</p>
+      <p class="small" style="margin:0">The address drops on <b id="payoffHandle">the official account</b> first, and nowhere before it.</p>
+    </div>
+  </section>
+
+  <!-- ============ HIM ============ -->
+  <section class="card wonky" id="him">
+    <p class="label">the character</p>
+    <h2>Somewhere out there, someone is aping in with their whole balance. This is not that guy.</h2>
+    <p>He does the research. He reads the contract. He opens the swap. He types the amount. He looks at it. He closes the tab and goes to make tea.</p>
+    <p>Then it runs without him, and he takes it surprisingly well, because being early and doing nothing is still a kind of being early.</p>
+
+    <div class="two">
+      <div class="box wonky-2">
+        <h3>What he is</h3>
+        <ul>
+          <li>Early, consistently</li>
+          <li>Correct, usually</li>
+          <li>Positioned, never</li>
+          <li>Still holding the tea</li>
+        </ul>
+      </div>
+      <div class="box wonky">
+        <h3>What he is not</h3>
+        <ul>
+          <li>A financial adviser</li>
+          <li>A signal group</li>
+          <li>A guarantee of anything</li>
+          <li>In the trade</li>
+        </ul>
+      </div>
+    </div>
+    <p class="hand" style="margin-top:16px">He hesitates. That is the whole product. You are welcome to hesitate alongside him, which most of you will do regardless.</p>
+  </section>
+
+  <!-- ============ THE INDEX ============ -->
+  <section class="card wonky-2" id="index">
+    <p class="label">the hesitation index</p>
+    <h2>Live, honest, useless.</h2>
+    <div class="stats">
+      <div class="stat"><div class="k">time on this page</div><div class="v" id="tOn">0:00</div><div class="s">you have not bought anything in all of it.</div></div>
+      <div class="stat"><div class="k">decisions made</div><div class="v">0</div><div class="s">this number is hardcoded. it has never been wrong.</div></div>
+      <div class="stat"><div class="k">times the button moved</div><div class="v" id="tDodge">0</div><div class="s">it does that. he does that too.</div></div>
+      <div class="stat"><div class="k">conviction</div><div class="v" id="tConv">12.4%</div><div class="s">decays the longer you look. as in life.</div></div>
+      <div class="stat"><div class="k">estimated entry</div><div class="v">later</div><div class="s">not a date. not a hint. later.</div></div>
+      <div class="stat"><div class="k">regret, projected</div><div class="v">yes</div><div class="s">the one metric we are confident about.</div></div>
+    </div>
+  </section>
+
+  <!-- ============ MOODS ============ -->
+  <section class="card wonky" id="moods">
+    <p class="label">the range</p>
+    <h2>Four feelings. That's the whole emotional range.</h2>
+    <div class="gallery">
+      <figure><img src="mascot/hesitate.svg" alt="HESITATE, uncertain" loading="lazy"><figcaption>about to</figcaption></figure>
+      <figure><img src="mascot/hesitate-almost.svg" alt="HESITATE, almost convinced" loading="lazy"><figcaption>almost</figcaption></figure>
+      <figure><img src="mascot/hesitate-missed.svg" alt="HESITATE, having missed it" loading="lazy"><figcaption>missed it</figcaption></figure>
+      <figure><img src="mascot/hesitate-shut.svg" alt="HESITATE, refusing to look" loading="lazy"><figcaption>not looking</figcaption></figure>
+    </div>
+    <p class="small" style="margin-top:12px">Draw him badly. Draw him in your own style. Draw him in situations he would hate. He is a meme, not a brand asset — the only rules are the nose, the green hoodie, and the fact that he never commits.</p>
+  </section>
+
+  <!-- ============ TOKEN ============ -->
+  <section class="card wonky-2" id="token">
+    <p class="label">the token</p>
+    <h2>Boring on purpose.</h2>
+    <p>The character is the joke. The contract is not.</p>
+
+    <div class="facts">
+      <div><b>ticker</b><span>$HESITATE</span></div>
+      <div><b>tax</b><span>0 / 0</span></div>
+      <div><b>supply</b><span>fixed</span></div>
+      <div><b>chain</b><span>Robinhood Chain</span></div>
+    </div>
+
+    <h3>Where the supply goes</h3>
+    <div class="dist">
+      <div class="row"><span class="n">Launch pool</span><div class="bar"><i style="width:100%"></i></div><span class="p">100%</span></div>
+      <div class="row"><span class="n">Team</span><div class="bar"><i style="width:0"></i></div><span class="p">0%</span></div>
+      <div class="row"><span class="n">Presale</span><div class="bar"><i style="width:0"></i></div><span class="p">0%</span></div>
+      <div class="row"><span class="n">Tax wallet</span><div class="bar"><i style="width:0"></i></div><span class="p">0%</span></div>
+    </div>
+
+    <h3 style="margin-top:18px">The rules</h3>
+    <ul class="rules">
+      <li>Minted once. Mint disabled after deploy, so the supply cannot change.</li>
+      <li>Zero tax on buys and sells, and no tax code in the contract, so it cannot be switched on later.</li>
+      <li>No team allocation, no presale, no allowlist. Nobody buys before you, including us.</li>
+      <li>Ownership renounced and liquidity burned at launch. Both are transactions you can check yourself.</li>
+    </ul>
+
+    <h3 style="margin-top:18px">Receipts</h3>
+    <ul class="receipts">
+      <li><span>Contract verified on the explorer</span><em id="rVerify">after launch</em></li>
+      <li><span>Ownership renounced</span><em id="rRenounce">after launch</em></li>
+      <li><span>Liquidity burned</span><em id="rBurn">after launch</em></li>
+    </ul>
+    <p class="small">Each line becomes an explorer link the moment the transaction exists. Until then, don't take our word for it — take the chain's.</p>
+
+    <div class="cabox wonky" id="cabox">
+      <div class="big" id="caBig">Contract: not deployed yet.</div>
+      <div class="addr" id="caAddr"></div>
+      <div class="cabtns" id="caBtns">
+        <button class="btn" id="copyBtn" type="button">Copy address</button>
+        <a class="btn green" id="swapBtn" href="#" target="_blank" rel="noopener">Buy $HESITATE</a>
+      </div>
+      <div class="mono" id="caNote">the CA drops on the official account first</div>
+    </div>
+  </section>
+
+  <!-- ============ BUY ============ -->
+  <section class="card wonky" id="howto">
+    <p class="label">how to buy</p>
+    <h2>Four steps. He has read all four. Twice.</h2>
+    <ol class="steps">
+      <li><h3>Get an EVM wallet</h3><p>MetaMask, Rabby, or Robinhood Wallet. Self custody. Write the recovery phrase on paper, not in a screenshot.</p></li>
+      <li><h3>Add Robinhood Chain</h3><p>Chain ID 4663, gas paid in ETH. Copy the network details from the official Robinhood Chain docs, never from a reply under a post.</p></li>
+      <li><h3>Bridge ETH in</h3><p>From Ethereum through the canonical Arbitrum bridge, or from another chain through a route like Relay or Across. You need ETH for gas and for the swap.</p></li>
+      <li><h3>Wait for the CA post</h3><p>Once he is live, any DEX or aggregator on the chain will do. The contract address and the official swap link go out on the project account, and that post is the launch.</p></li>
+    </ol>
+    <div class="warn"><b>Before that post there is nothing to buy.</b> Any token called HESITATE on any chain before the CA post is not him. Any DM offering early access is somebody else's exit.</div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="card wonky-2" id="faq">
+    <p class="label">questions</p>
+    <h2>Asked reluctantly, answered anyway.</h2>
+    <details><summary>When is the launch?</summary><div class="a"><p>No date. The CA post is the launch. Anything with a countdown on it did not come from us.</p></div></details>
+    <details><summary>Is there a presale or whitelist?</summary><div class="a"><p>No. The entire supply goes into the launch pool. Nobody gets in before the post, including the people who made him.</p></div></details>
+    <details><summary>What is the tax?</summary><div class="a"><p>Zero on buys, zero on sells, and no tax logic in the contract at all — so it cannot be turned on later.</p></div></details>
+    <details><summary>Who holds the team tokens?</summary><div class="a"><p>Nobody. There is no team allocation. A wallet labelled "team" is not ours.</p></div></details>
+    <details><summary>Can the supply change?</summary><div class="a"><p>No. Minted once, mint disabled, ownership renounced at launch. Nobody can add, freeze, or claw back tokens afterwards.</p></div></details>
+    <details><summary>Why does the button run away?</summary><div class="a"><p>Because that is the joke, and because it is the only honest buy button on the internet right now — there is genuinely nothing behind it yet. Chase it seven times and it gives up.</p></div></details>
+    <details><summary>Is this affiliated with Robinhood?</summary><div class="a"><p>No. $HESITATE is a meme token deployed on Robinhood Chain by people who are not Robinhood. The chain is public and anyone can deploy on it. No endorsement, no partnership, no connection.</p></div></details>
+    <details><summary>Why Robinhood Chain?</summary><div class="a"><p>It is an Ethereum Layer 2 built with Arbitrum technology, gas is paid in ETH, fees are low, and mainnet has been live since July 2026. Cheap enough to hesitate on repeatedly.</p></div></details>
+    <details><summary>Is there a roadmap?</summary><div class="a"><p>No phases, no milestones, no dates. Committing to a roadmap would be out of character.</p></div></details>
+    <details><summary>How do I spot a fake?</summary><div class="a"><p>The real CA comes from the project account and nowhere else. Different account, DM, Telegram admin, early link, launch date — all fake.</p></div></details>
+    <details><summary>Can I use the character?</summary><div class="a"><p>Yes. Redraw him, meme him, put him in your own art. He is meant to be copied badly. The source files are in the repo.</p></div></details>
+    <details><summary>Is there a whitepaper?</summary><div class="a"><p>He started one. It is still open in a tab.</p></div></details>
+  </section>
+
+  <!-- ============ LINKS ============ -->
+  <section class="card wonky" id="links">
+    <p class="label">where he lives</p>
+    <h2>One account. One website.</h2>
+    <div class="links" id="linkRow">
+      <span class="link soon" id="xLink">X: announced before launch</span>
+      <span class="link soon">Explorer: after the CA</span>
+      <span class="link soon">Swap: after the CA</span>
+      <span class="link soon" id="chartLink">Chart: after the CA</span>
+    </div>
+    <p class="small" style="margin-top:14px">If a link to $HESITATE did not come from this page or the official account, it is not ours.</p>
+  </section>
+
+</main>
+
+<footer>
+  $HESITATE is a meme token on Robinhood Chain with no intrinsic value, no utility, and no promise of return.<br>
+  Not affiliated with, endorsed by, or connected to Robinhood Markets, Inc.<br>
+  Nothing on this page is financial advice. Hesitate responsibly.
+</footer>
+
+<script>
+(function(){
+  /* ------------------------------------------------------------------
+     CONFIG — the only block you edit at launch.
+     Fill in `handle` before deploying, and `ca` the moment it exists.
+     Everything else on the page unlocks itself from these values.
+  ------------------------------------------------------------------ */
+  var CONFIG = {
+    handle:   '',   // e.g. 'hesitatecoin' — no @. leave '' and the page says "announced before launch"
+    ca:       '',   // contract address after deploy
+    swap:     '',   // official swap link
+    explorer: '',   // explorer link for the contract
+    chart:    '',   // dexscreener / chart link
+    verifyTx: '', renounceTx: '', burnTx: ''
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- the button that will not be clicked ---------------- */
+  var stage = $('stage'), buy = $('buy'), ghost = $('ghost'), face = $('face');
+  var dodges = 0, MAX = 7, settled = false;
+
+  var LINES = [
+    'the button is right there.',
+    'hm.',
+    'that is not supposed to happen.',
+    'try again. slower this time.',
+    'he does this too, for the record.',
+    'you have now hesitated more than he has.',
+    'one more.',
+    'fine. it is yours.'
+  ];
+  var FACES = ['mascot/hesitate.svg','mascot/hesitate-almost.svg','mascot/hesitate-missed.svg','mascot/hesitate-shut.svg'];
+  FACES.forEach(function(src){ var i = new Image(); i.src = src; });
+
+  function faceFor(n){
+    if (settled) return FACES[3];
+    if (n >= 6) return FACES[2];
+    if (n >= 3) return FACES[1];
+    return FACES[0];
+  }
+
+  function dodge(){
+    if (settled) return;
+    dodges++;
+    stage.classList.add('moved');
+
+    var pad = 8;
+    var w = stage.clientWidth, h = stage.clientHeight;
+    var bw = buy.offsetWidth, bh = buy.offsetHeight;
+    var maxX = Math.max(pad, w - bw - pad), maxY = Math.max(pad, h - bh - pad);
+    var cx = buy.offsetLeft, cy = buy.offsetTop;
+    var nx, ny, far = Math.min(w, h) * 0.4, tries = 0;
+    do {
+      nx = pad + Math.random() * (maxX - pad);
+      ny = pad + Math.random() * (maxY - pad);
+    } while (Math.hypot(nx - cx, ny - cy) < far && ++tries < 24);
+    buy.style.left = nx + 'px';
+    buy.style.top  = ny + 'px';
+
+    $('dodges').textContent = dodges;
+    $('tDodge').textContent = dodges;
+    ghost.textContent = LINES[Math.min(dodges, LINES.length - 1)];
+    face.src = faceFor(dodges);
+    bumpGlobal();
+
+    if (dodges >= MAX) settle();
+  }
+
+  function settle(){
+    settled = true;
+    stage.classList.add('settled');
+    buy.classList.add('tired');
+    buy.textContent = '…fine. BUY $HESITATE';
+    ghost.textContent = LINES[LINES.length - 1];
+    face.src = faceFor(dodges);
+  }
+
+  function reveal(){
+    settle();
+    $('payoff').classList.add('on');
+  }
+
+  // desktop: it flinches when the pointer gets close
+  stage.addEventListener('pointermove', function(e){
+    if (settled || reduce || e.pointerType !== 'mouse') return;
+    var r = buy.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    var bx = r.left + r.width / 2 - s.left, by = r.top + r.height / 2 - s.top;
+    var px = e.clientX - s.left, py = e.clientY - s.top;
+    if (Math.hypot(px - bx, py - by) < Math.max(r.width, r.height) * 0.75) dodge();
+  });
+
+  // touch: it moves out from under the finger before the tap lands
+  buy.addEventListener('pointerdown', function(e){
+    if (settled || reduce || e.pointerType === 'mouse') return;
+    e.preventDefault();
+    dodge();
+  });
+
+  // a real click only ever happens once it has given up
+  buy.addEventListener('click', function(){ reveal(); });
+
+  // keyboard and reduced-motion users skip the game entirely. same payoff.
+  buy.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(); }
+  });
+  if (reduce) ghost.textContent = 'it would normally run away. press it.';
+
+  /* ---------------- the hesitation index ---------------- */
+  var t0 = Date.now();
+  setInterval(function(){
+    var s = Math.floor((Date.now() - t0) / 1000);
+    $('tOn').textContent = Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+    // conviction decays with every second you spend not deciding
+    $('tConv').textContent = (12.4 * Math.pow(0.995, s)).toFixed(1) + '%';
+  }, 1000);
+
+  /* ---------------- global flinch counter ----------------
+     Same public counter service the sibling site uses. If it is unreachable
+     the pill just stays quiet — nothing on the page depends on it.        */
+  var CB = 'https://abacus.jasoncameron.dev',
+      GET = CB + '/get/hesitatecoin/flinches',
+      HIT = CB + '/hit/hesitatecoin/flinches';
+  var gEl = $('gcount'), budget = 3;
+  function read(r){ return r.json().then(function(j){
+    return j.count !== undefined ? j.count : (j.value !== undefined ? j.value : (j.data && j.data.count));
+  }); }
+  function show(t){ if (t >= 0) gEl.textContent = Number(t).toLocaleString(); }
+  function pull(){ fetch(GET).then(read).then(show).catch(function(){ gEl.textContent = '—'; }); }
+  function bumpGlobal(){ if (budget-- <= 0) return; fetch(HIT).then(read).then(show).catch(function(){}); }
+  setInterval(function(){ budget = 3; }, 1000);
+  setInterval(pull, 15000);
+  pull();
+
+  /* ---------------- launch config ---------------- */
+  function asLink(el, url, text){
+    if (!url || !el) return;
+    var a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    a.className = el.className.replace(' soon', '');
+    a.textContent = text; a.id = el.id;
+    el.replaceWith(a);
+  }
+
+  if (CONFIG.handle) {
+    var h = '@' + CONFIG.handle, url = 'https://x.com/' + CONFIG.handle;
+    $('payoffHandle').textContent = h;
+    $('caNote').textContent = 'the CA drops on ' + h + ' first';
+    asLink($('xLink'), url, 'X: ' + h);
+  }
+
+  if (CONFIG.ca) {
+    $('caBig').textContent = 'Contract address';
+    var addr = $('caAddr');
+    addr.textContent = CONFIG.ca;
+    addr.style.display = 'block';
+    $('caBtns').style.display = 'flex';
+    $('copyBtn').addEventListener('click', function(){
+      navigator.clipboard.writeText(CONFIG.ca).then(function(){
+        $('copyBtn').textContent = 'copied.';
+        setTimeout(function(){ $('copyBtn').textContent = 'Copy address'; }, 1600);
+      });
+    });
+    if (CONFIG.swap) $('swapBtn').href = CONFIG.swap; else $('swapBtn').remove();
+  }
+  asLink($('chartLink'), CONFIG.chart, 'Chart');
+  [['rVerify', CONFIG.verifyTx], ['rRenounce', CONFIG.renounceTx], ['rBurn', CONFIG.burnTx]]
+    .forEach(function(pair){
+      if (!pair[1]) return;
+      var el = $(pair[0]);
+      el.innerHTML = '<a href="' + pair[1] + '" target="_blank" rel="noopener">verify</a>';
+    });
+
+  /* ---------------- nav highlight ---------------- */
+  if ('IntersectionObserver' in window) {
+    var chips = [].slice.call(document.querySelectorAll('#chips a'));
+    var map = {};
+    chips.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        chips.forEach(function(a){ a.classList.remove('on'); });
+        if (map[en.target.id]) map[en.target.id].classList.add('on');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>

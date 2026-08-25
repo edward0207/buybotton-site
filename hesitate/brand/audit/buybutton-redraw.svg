@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-label="BUYBUTTON redrawn in the HESITATE house style: a cracked arcade buy button with a face, duct tape and a torn cable">
+<title>BUYBUTTON — house style redraw</title>
+<!--
+  Demonstration only. Same palette, same wobble, same ink weights as the HESITATE
+  mascot, applied to a completely unrelated character. If these two read as one
+  family, the style is a system rather than a one-off.
+-->
+<defs>
+  <filter id="wobbleFill" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.019" numOctaves="3" seed="3" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="wobbleInk" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.026" numOctaves="3" seed="17" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="8"/>
+    <feColorMatrix values="0 0 0 0 0.32  0 0 0 0 0.26  0 0 0 0 0.17  0 0 0 0.11 0"/>
+  </filter>
+  <style>
+    .ink   { fill:none; stroke:#23201B; stroke-linecap:round; stroke-linejoin:round; opacity:.94 }
+    .paper { fill:#F1E7D3 }
+    .mitt  { fill:#FAF3E4 }
+    .tape  { fill:#D6CBB4 }
+    .green { fill:#5E9455 }
+    .green2{ fill:#6DA462 }
+    .greenD{ fill:#47713F }
+    .fillInk { fill:#23201B; opacity:.94 }
+  </style>
+</defs>
+
+<rect x="-200" y="-200" width="1400" height="1400" class="paper"/>
+
+<!-- ============ FLAT COLOUR ============ -->
+<g filter="url(#wobbleFill)" transform="translate(-5,4)">
+  <!-- base plate, behind everything -->
+  <ellipse class="greenD" cx="500" cy="806" rx="348" ry="76"/>
+  <!-- arms, behind the barrel -->
+  <path class="green" d="M 224 590 C 188 606, 158 636, 140 668 L 196 712 C 214 680, 240 654, 270 640 Z"/>
+  <path class="green" d="M 782 546 C 820 522, 856 486, 874 452 L 812 414 C 794 452, 766 484, 738 498 Z"/>
+  <!-- barrel -->
+  <path class="green" d="M 212 360
+    C 212 288, 340 232, 500 232
+    C 660 232, 792 288, 792 360
+    L 788 700
+    C 788 754, 654 786, 498 786
+    C 342 786, 210 754, 212 700 Z"/>
+  <!-- the cap, one step lighter because it is the plane facing you -->
+  <ellipse class="green2" cx="500" cy="360" rx="272" ry="130"/>
+  <!-- mitts, in front -->
+  <ellipse class="mitt" cx="126" cy="700" rx="58" ry="54"/>
+  <ellipse class="mitt" cx="896" cy="410" rx="58" ry="56"/>
+  <!-- duct tape over the crack -->
+  <path class="tape" d="M 262 500 L 400 474 L 410 546 L 270 572 Z"/>
+</g>
+
+<!-- ============ INK ============ -->
+<g filter="url(#wobbleInk)">
+  <!-- base plate: only the part the barrel does not hide -->
+  <path class="ink" stroke-width="11" d="M 208 762
+    C 176 772, 154 788, 152 806
+    C 156 858, 300 884, 500 884
+    C 700 884, 844 858, 848 806
+    C 846 788, 824 772, 792 762"/>
+
+  <!-- arms -->
+  <path class="ink" stroke-width="10" d="M 224 590 C 188 606, 158 636, 140 668"/>
+  <path class="ink" stroke-width="10" d="M 196 712 C 214 680, 240 654, 270 640"/>
+  <path class="ink" stroke-width="10" d="M 782 546 C 820 522, 856 486, 874 452"/>
+  <path class="ink" stroke-width="10" d="M 812 414 C 794 452, 766 484, 738 498"/>
+
+  <!-- barrel -->
+  <path class="ink" stroke-width="11" d="M 212 360
+    C 212 288, 340 232, 500 232
+    C 660 232, 792 288, 792 360
+    L 788 700
+    C 788 754, 654 786, 498 786
+    C 342 786, 210 754, 212 700 Z"/>
+  <!-- cap -->
+  <path class="ink" stroke-width="10" d="M 228 360 a 272 130 0 1 0 544 0 a 272 130 0 1 0 -544 0"/>
+
+  <!-- BUY. hand-lettered. none of the three letters agree on a baseline. -->
+  <g class="ink" stroke-width="17">
+    <path d="M 356 322 L 356 402 L 404 402 C 424 402, 428 382, 410 374 L 358 368"/>
+    <path d="M 358 368 L 402 364 C 420 362, 422 344, 404 340 L 356 324"/>
+    <path d="M 458 316 L 460 374 C 462 402, 516 404, 518 376 L 520 314"/>
+    <path d="M 572 312 L 600 354 L 632 308"/>
+    <path d="M 600 354 L 602 398"/>
+  </g>
+
+  <!-- face. determined, not cheerful. the exact opposite face to HESITATE's. -->
+  <circle class="fillInk" cx="414" cy="606" r="15"/>
+  <path class="ink" stroke-width="10" d="M 358 600 C 384 576, 434 574, 456 596"/>
+  <path class="ink" stroke-width="6" d="M 360 602 C 384 632, 432 634, 456 598"/>
+  <circle class="fillInk" cx="596" cy="594" r="12.5"/>
+  <path class="ink" stroke-width="9" d="M 548 590 C 570 570, 614 568, 634 586"/>
+  <path class="ink" stroke-width="5.5" d="M 550 592 C 570 618, 612 620, 632 588"/>
+  <!-- brows down and in -->
+  <path class="ink" stroke-width="10" d="M 346 552 C 378 542, 414 546, 446 562"/>
+  <path class="ink" stroke-width="9" d="M 646 542 C 618 534, 584 538, 556 554"/>
+  <path class="ink" stroke-width="8" d="M 430 692 C 464 710, 528 710, 566 688"/>
+
+  <!-- duct tape, and the crack it does not quite cover -->
+  <path class="ink" stroke-width="7" d="M 262 500 L 400 474 L 410 546 L 270 572 Z"/>
+  <path class="ink" stroke-width="4" d="M 286 492 L 296 564"/>
+  <path class="ink" stroke-width="4" d="M 330 484 L 340 556"/>
+  <path class="ink" stroke-width="4" d="M 374 478 L 382 550"/>
+  <path class="ink" stroke-width="6" d="M 268 570 L 248 606 L 270 620 L 246 662 L 262 682"/>
+
+  <!-- mitts -->
+  <path class="ink" stroke-width="9" d="M 126 700 m -58 0 a 58 54 0 1 0 116 0 a 58 54 0 1 0 -116 0"/>
+  <path class="ink" stroke-width="9" d="M 896 410 m -58 0 a 58 56 0 1 0 116 0 a 58 56 0 1 0 -116 0"/>
+  <path class="ink" stroke-width="5" d="M 866 388 C 888 378, 920 380, 938 392"/>
+
+  <!-- the cable it pulled out of itself -->
+  <path class="ink" stroke-width="9" d="M 224 866 C 172 886, 128 896, 88 888"/>
+  <path class="ink" stroke-width="5" d="M 88 888 C 70 882, 56 868, 48 852"/>
+  <path class="ink" stroke-width="5" d="M 88 888 C 66 894, 48 894, 32 886"/>
+  <path class="ink" stroke-width="5" d="M 88 888 C 72 902, 54 912, 36 914"/>
+</g>
+
+<rect x="-200" y="-200" width="1400" height="1400" filter="url(#paperGrain)" style="mix-blend-mode:multiply" pointer-events="none"/>
+</svg>
