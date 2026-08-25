@@ -380,7 +380,7 @@ footer{border-top:2.5px solid var(--ink);padding:24px 18px 40px;text-align:cente
       <span class="link soon">Swap: after the CA</span>
       <span class="link soon" id="chartLink">Chart: after the CA</span>
     </div>
-    <p class="small" style="margin-top:14px">If a link to $HESITATE did not come from this page or the official account, it is not ours.</p>
+    <p class="small" style="margin-top:14px">If a link to $HESITATE did not come from this page or <b id="officialAccount">the official account</b>, it is not ours.</p>
   </section>
 
 </main>
@@ -399,7 +399,7 @@ footer{border-top:2.5px solid var(--ink);padding:24px 18px 40px;text-align:cente
      Everything else on the page unlocks itself from these values.
   ------------------------------------------------------------------ */
   var CONFIG = {
-    handle:   '',   // e.g. 'hesitatecoin' — no @. leave '' and the page says "announced before launch"
+    handle:   'hesitatehood',   // no @. leave '' and the page says "announced before launch"
     ca:       '',   // contract address after deploy
     swap:     '',   // official swap link
     explorer: '',   // explorer link for the contract
@@ -514,8 +514,8 @@ footer{border-top:2.5px solid var(--ink);padding:24px 18px 40px;text-align:cente
      Same public counter service the sibling site uses. If it is unreachable
      the pill just stays quiet — nothing on the page depends on it.        */
   var CB = 'https://abacus.jasoncameron.dev',
-      GET = CB + '/get/hesitatecoin/flinches',
-      HIT = CB + '/hit/hesitatecoin/flinches';
+      GET = CB + '/get/hesitatehood/flinches',
+      HIT = CB + '/hit/hesitatehood/flinches';
   var gEl = $('gcount'), budget = 3;
   function read(r){ return r.json().then(function(j){
     return j.count !== undefined ? j.count : (j.value !== undefined ? j.value : (j.data && j.data.count));
@@ -540,6 +540,7 @@ footer{border-top:2.5px solid var(--ink);padding:24px 18px 40px;text-align:cente
   if (CONFIG.handle) {
     var h = '@' + CONFIG.handle, url = 'https://x.com/' + CONFIG.handle;
     $('payoffHandle').textContent = h;
+    $('officialAccount').textContent = h;
     $('caNote').textContent = 'the CA drops on ' + h + ' first';
     asLink($('xLink'), url, 'X: ' + h);
   }

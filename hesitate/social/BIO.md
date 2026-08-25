@@ -1,5 +1,8 @@
 # Profil X
 
+**Handle: `@hesitatehood`** — udah diisi di `index.html` (`CONFIG.handle`) dan di
+semua caption di `POSTS.md`.
+
 ## Aset
 
 | Field | File | Ukuran |
@@ -36,6 +39,11 @@ He saw it. He thought about it. He did not click.
 $HESITATE on Robinhood Chain. No presale, no team wallet.
 CA drops here first.
 ```
+
+"here" di baris terakhir sengaja, bukan `@hesitatehood` — orang yang baca bio itu
+udah berdiri di profilnya. Nyebut handle sendiri di bio sendiri kelihatan kayak
+bot. Di **caption post** kebalikannya: di situ handle-nya ditulis lengkap, karena
+post beredar sebagai screenshot yang kehilangan konteks.
 
 Kenapa dibentuk kayak gini: baris pertama joke-nya, baris kedua faktanya, baris
 ketiga pertahanan anti-scam. Orang yang mampir dari post pertama butuh ketiganya
@@ -79,30 +87,25 @@ Ganti pinned-nya cuma satu kali: pas CA-nya keluar.
 
 ---
 
-## Handle
+## Handle — sudah dipilih
 
-Gue **nggak** isi handle-nya di kode dan nggak nge-link ke akun manapun, karena
-nge-link ke handle yang belum lu pegang itu resiko impersonation — orang lain bisa
-daftar handle itu dan nerima traffic dari situs lu.
+`@hesitatehood`.
 
-Kandidat buat lu cek ketersediaannya, urut dari paling bagus:
+Dua alasan. Satu, `-hood` udah jadi pola di keluarga token lu (`slowmohood`), jadi
+orang yang follow satu bakal ngenalin yang lain. Dua, dia nyebut Robinhood tanpa
+ngaku-ngaku afiliasi — dan itu persis posisi yang lu mau.
 
-1. `hesitate` — kalau bebas, ambil. Nggak akan bebas.
-2. `hesitatecoin` — pola yang sama kayak `buybuttoncoin`, konsisten sama keluarga
-3. `hesitatehood` — pola yang sama kayak `slowmohood`, paling nyambung ke Robinhood Chain
-4. `hesitateonrh`
-5. `sohesitate`
+Kandidat lain yang dipertimbangkan: `hesitate` (hampir pasti nggak bebas),
+`hesitatecoin`, `hesitateonrh`, `sohesitate`.
 
-**Rekomendasi gue: `hesitatehood`.** Dua alasan. Satu, `-hood` udah jadi pola di
-keluarga token lu (`slowmohood`), jadi orang yang follow satu bakal ngenalin yang
-lain. Dua, dia nyebut Robinhood tanpa ngaku-ngaku afiliasi — dan itu persis posisi
-yang lu mau.
+**Yang perlu lu lakuin sekarang:**
 
-Begitu udah dapet, isi di dua tempat:
+1. Daftarin `@hesitatehood` sebelum orang lain — semua caption dan situsnya
+   sekarang nunjuk ke situ.
+2. Kalau ternyata **udah keambil**, jangan diem-diem pakai yang lain: ganti di satu
+   tempat aja, `CONFIG.handle` di `index.html`, terus cari-ganti `hesitatehood`
+   di `social/POSTS.md`. Selain itu nggak ada yang perlu disentuh.
 
-```js
-// hesitate/index.html — blok CONFIG di paling bawah
-handle: 'hesitatehood',
-```
-
-dan di `social/POSTS.md` buat referensi caption.
+> Counter global di situs juga ikut pindah namespace ke `hesitatehood/flinches`
+> biar semua identifier publik seragam. Angkanya masih nol, jadi nggak ada yang
+> hilang.

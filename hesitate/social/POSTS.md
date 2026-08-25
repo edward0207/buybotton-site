@@ -1,5 +1,7 @@
 # Postingan
 
+Akun: **@hesitatehood**
+
 Aset yang udah jadi:
 
 | File | Format | Buat |
@@ -30,7 +32,7 @@ $HESITATE
 he saw it. he thought about it. he did not click.
 
 no presale. no team wallet. no contract yet.
-when there is one it gets posted here, and nowhere else.
+when there is one it gets posted by @hesitatehood, and nowhere else.
 ```
 
 **Reply pertama (dari akun sendiri, langsung setelah posting):**
@@ -41,6 +43,9 @@ site's up, the buy button doesn't work yet — that's on purpose
 [URL situs]
 ```
 
+> `[URL situs]` masih placeholder — belum ada domain yang lu kasih. Begitu ada,
+> isi juga di field **Website** profil (lihat `BIO.md`).
+
 Kenapa caption-nya dibentuk begini:
 
 - Baris pertama ticker doang. Orang yang scroll cepat cuma nangkep itu.
@@ -48,6 +53,9 @@ Kenapa caption-nya dibentuk begini:
 - Dua baris terakhir yang bikin akunnya kelihatan bener. Post pertama sebuah token
   itu bukan cuma lelucon — di situ orang mutusin mau percaya apa nggak. Nyebut
   "no contract yet" duluan bikin lu kebal sama scam yang bakal muncul pakai nama lu.
+- Handle-nya **ditulis lengkap**, bukan cuma "here". Post ini bakal beredar sebagai
+  screenshot, dan screenshot kehilangan konteks siapa yang posting. `@hesitatehood`
+  di dalam badan teks itu ikut kebawa ke manapun gambarnya nyampe.
 
 **Videonya sengaja dibikin tanpa suara.** X autoplay dalam kondisi mute, jadi
 semua jokes-nya ditulis di frame. Nambahin musik cuma nambah berat file dan risiko
@@ -115,6 +123,8 @@ things $HESITATE does not have:
 - a contract address
 - a date
 - your money
+
+the only account that will ever post one: @hesitatehood
 ```
 
 Post 6 itu yang paling penting di antrian ini. Dia lucu, tapi kerjaan aslinya
@@ -142,8 +152,8 @@ bukti kalau nanti ada akun palsu yang ngaku-ngaku CA duluan.
   ada "next 100x".
 - **Apapun yang berbunyi kayak jaminan.** Termasuk yang bercanda.
 - **Ngajak DM.** Kita nggak pernah DM duluan, dan kita bilang itu terang-terangan.
-  Setiap DM yang ngaku dari kita itu palsu, dan lebih gampang bilang gitu dari
-  awal daripada pas orang udah kena.
+  Setiap DM yang ngaku dari @hesitatehood itu palsu, dan lebih gampang bilang gitu
+  dari awal daripada pas orang udah kena.
 - **Ngaku-ngaku afiliasi Robinhood.** Kita deploy *di* Robinhood Chain. Chain-nya
   publik dan siapa aja bisa deploy. Itu bukan kerja sama, dan salah nulis satu
   kalimat soal ini bisa jadi masalah beneran, bukan cuma masalah citra.

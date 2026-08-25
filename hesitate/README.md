@@ -78,7 +78,7 @@ Satu blok `CONFIG` di paling bawah `index.html`. Cuma itu yang perlu disentuh:
 
 ```js
 var CONFIG = {
-  handle:   '',   // handle X, tanpa @. kosong = halaman nulis "announced before launch"
+  handle:   'hesitatehood',   // sudah diisi
   ca:       '',   // contract address setelah deploy
   swap:     '',   // link swap resmi
   explorer: '', chart: '',
@@ -90,9 +90,9 @@ Halamannya buka-sendiri dari nilai di atas — isi `ca`, dan kotak "Contract: no
 deployed yet" berubah jadi alamat + tombol copy + tombol swap. Isi `verifyTx` dkk,
 baris Receipts berubah jadi link explorer. Nggak ada HTML yang perlu diedit.
 
-> **`handle` masih kosong.** Gue sengaja nggak nebak akun X — nge-link ke handle
-> yang belum lu pegang itu resiko impersonation. Kandidat + rekomendasi ada di
-> `social/BIO.md`.
+> **Daftarin `@hesitatehood` sebelum situsnya live.** Situs dan semua caption
+> sekarang nunjuk ke handle itu; kalau belum lu pegang, orang lain bisa daftar dan
+> nerima traffic-nya. Cara ganti kalau ternyata keambil ada di `social/BIO.md`.
 
 ---
 
@@ -109,7 +109,7 @@ Sudah ditangani:
 - **Counter global mati** — pill-nya nampilin `—`, nggak ada yang rusak
 
 Counter global numpang layanan publik yang sama kayak situs BUYBUTTON
-(`abacus.jasoncameron.dev`), key `hesitatecoin/flinches`.
+(`abacus.jasoncameron.dev`), key `hesitatehood/flinches`.
 
 ---
 
@@ -124,7 +124,8 @@ sewaktu-waktu perlu dilihat lagi.
 
 ## Yang belum dikerjain
 
-- `handle` di CONFIG masih kosong (lihat di atas)
+- Domain situsnya belum ada. `[URL situs]` di `social/POSTS.md` dan field
+  **Website** di profil masih nunggu itu.
 - Empat temuan teknis di `buybotton-site/index.html` — og.jpg nggak kepakai,
   rasio OG salah, hotlink raw.githubusercontent, `og:image:width` nggak ada.
   Detail di `brand/audit/AUDIT.md`. Di luar scope, jadi gue tinggalin.
