@@ -63,9 +63,9 @@ Ini temuan yang paling penting, dan nggak kelihatan kalau ngelihat aset satu-sat
 
 | | SLOWMO | BUYBUTTON | HESITATE (baru) |
 |---|---|---|---|
-| Medium | foto boneka wool | render 3D | ilustrasi tinta |
-| Background | abu-abu studio | `#1e2129` gelap | cream `#F1E7D3` |
-| Hijau | `#a3b89e` sage | `#4ade60` neon | `#5E9455` muted |
+| Medium | foto boneka wool | render 3D | ilustrasi tinta (digambar tangan) |
+| Background | abu-abu studio | `#1e2129` gelap | krem `#F8F0E0` |
+| Hijau | `#a3b89e` sage | `#4ade60` neon | `#5DBC64` di rambut |
 | Font | Fredoka + Nunito + Caveat | Archivo Black + IBM Plex Mono | Bricolage + Work Sans + Caveat |
 | Rasa | hangat, handmade | gelap, arcade, sinis | hangat, handmade |
 
@@ -85,13 +85,14 @@ digambar-ulangkan; BUYBUTTON perlu ganti aset *dan* ganti palet halaman.
 ## Bukti kalau ini sistem, bukan gaya sekali pakai
 
 `buybutton-redraw.svg` di folder ini adalah BUYBUTTON, digambar ulang pakai
-**palet, wobble filter, dan bobot garis yang persis sama** dengan maskot HESITATE.
-Nggak ada satupun path yang dipakai bareng — cuma sistemnya yang sama.
+**palet dan bobot garis yang sama** dengan art HESITATE — krem `#F8F0E0`, tinta
+hitam, hijau `#5DBC64`. Nggak ada satupun bentuk yang dipakai bareng, cuma
+sistemnya yang sama.
 
 Ceritanya dipertahankan semua: retak, lakban, kabel yang dia cabut sendiri, dan
 ekspresi yang sengaja dibikin **kebalikan** HESITATE — alis dua-duanya turun ke
-dalam, bukan satu naik satu turun. Karakter yang satu nekan tombolnya, yang satu
-nggak pernah.
+dalam dan matanya sama besar, bukan nggak sinkron. Karakter yang satu nekan
+tombolnya, yang satu nggak pernah.
 
 Ini **demo, bukan pengganti langsung.** Gue sengaja nggak nyentuh
 `buybotton-site/index.html`, karena ganti aset di situ berarti ganti palet halaman

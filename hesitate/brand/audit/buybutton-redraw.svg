@@ -19,14 +19,14 @@
     <feColorMatrix values="0 0 0 0 0.32  0 0 0 0 0.26  0 0 0 0 0.17  0 0 0 0.11 0"/>
   </filter>
   <style>
-    .ink   { fill:none; stroke:#23201B; stroke-linecap:round; stroke-linejoin:round; opacity:.94 }
-    .paper { fill:#F1E7D3 }
-    .mitt  { fill:#FAF3E4 }
-    .tape  { fill:#D6CBB4 }
-    .green { fill:#5E9455 }
-    .green2{ fill:#6DA462 }
-    .greenD{ fill:#47713F }
-    .fillInk { fill:#23201B; opacity:.94 }
+    .ink   { fill:none; stroke:#14120F; stroke-linecap:round; stroke-linejoin:round; opacity:.94 }
+    .paper { fill:#F8F0E0 }
+    .mitt  { fill:#FCF8ED }
+    .tape  { fill:#D8CDB6 }
+    .green { fill:#5DBC64 }
+    .green2{ fill:#6FCB76 }
+    .greenD{ fill:#3F8E48 }
+    .fillInk { fill:#14120F; opacity:.94 }
   </style>
 </defs>
 
