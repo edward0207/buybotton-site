@@ -29,8 +29,9 @@ hesitate/
 │   ├── tokens.css          token warna & tipografi
 │   └── audit/              temuan di buy.png dan logo.png
 └── tools/
-    ├── render-cards.mjs    cards.html  → banner / pfp / icon / og / post2
-    └── render-video.mjs    frame.html  → post1.mp4
+    ├── render-cards.mjs       cards.html → banner / pfp / icon / og / post2
+    ├── render-video.mjs       frame.html → post1.mp4
+    └── build-standalone.mjs   semuanya   → satu file HTML mandiri
 ```
 
 ---
@@ -69,6 +70,15 @@ Nggak ada build step, nggak ada dependency:
 ```bash
 npx serve .        # atau buka index.html langsung
 ```
+
+**Versi satu file** (gambar di-inline jadi data URI, jalan tanpa internet sama sekali):
+
+```bash
+node tools/build-standalone.mjs      # -> dist/hesitate.html, ~2,4 MB
+```
+
+Berguna buat preview, buat dikirim ke orang, atau buat host yang cuma nerima satu
+file. `dist/` sengaja di-gitignore — dia hasil generate, bukan sumber.
 
 ---
 
